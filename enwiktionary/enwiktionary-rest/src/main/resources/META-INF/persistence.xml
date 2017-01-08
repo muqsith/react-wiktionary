@@ -10,7 +10,7 @@
 
 		<properties>
 			<property name="hibernate.enable_lazy_load_no_trans" value="true" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect" />
+			<property name="hibernate.dialect" value="com.faiza.wiktionary.lib.SQLiteDialect" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.transaction.jta.platform" value="com.faiza.wiktionary.AtomikosJTAPlatform" />
 		</properties>
