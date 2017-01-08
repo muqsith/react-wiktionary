@@ -1,0 +1,170 @@
+@import "./result-panel.scss";
+@import "./search-panel.scss";
+@import "./navigation.scss";
+@import "./bookmarks.scss";
+
+$header-background: #222;
+
+.wrapper {
+    flex: 1 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.wrapper,
+body,
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+header {
+    order: 1;
+    flex: 0 0 auto;
+    min-height: 5%;
+    width: 100%;
+    background-color: $header-background;
+    box-shadow: 0 2px 6px 4px #ccc;
+    z-index: 1000;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.main {
+    order: 2;
+    overflow-y: auto;
+    flex-grow: 1 0 auto;
+    width: 100%;
+    min-height: 92%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.apparea {
+  order: 1;
+  flex: 1 0 auto;
+  min-height: 98%;
+  display: inline-flex;
+  flex-flow: row nowrap;
+}
+
+.footer {
+    order: 2;
+    flex: 0 0 auto;
+    min-height: 2%;
+    width: 100%;
+    text-align: center;
+    background-color: #666;
+    color: #fff;
+    font-size: 95%;
+    z-index: 1000;
+}
+
+.footer a {
+  text-decoration: none;
+  margin: 0.1%;
+  padding: 0.2%;
+  color: lightgreen;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.footer a:hover {
+  background-color: lightgreen;
+  color: #222;
+}
+
+.creative-commons-anchor {
+  text-decoration: none;
+  color: #fff !important;
+}
+
+.creative-commons-anchor:hover {
+  text-decoration: none;
+  color: #fff !important;
+  background-color: #666 !important;
+}
+
+.creative-commons-icon{
+  margin:1% !important;
+  font-size: 120%;
+  cursor: pointer;
+}
+
+
+.aside-1 {
+    order: 1;
+    flex: 1 0 auto;
+    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
+
+    display: flex;
+}
+
+.mainarticle {
+    order: 2;
+    flex: 1 0 auto;
+    text-align: left;
+    width: 70%;
+    min-width: 70%;
+    max-width: 70%;
+
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.aside-2 {
+    order: 3;
+    flex: 1 0 auto;
+    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
+
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.images-area {
+
+}
+
+.hidden {
+  display: none;
+}
+
+.about {
+  flex: 1 0 auto;
+  padding: 5%;
+  font-size: 100%;
+}
+
+.contact {
+  flex: 1 0 auto;
+  padding: 5%;
+  font-size: 100%;
+}
+
+.others ul li {
+  margin: 1%;
+}
+.others a{
+  text-decoration: none;
+  margin: 0.1%;
+  padding: 0.2%;
+  color: steelblue;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+.others a:hover{
+  background-color: steelblue;
+  color: #fff;
+}

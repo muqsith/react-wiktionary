@@ -1,0 +1,17 @@
+enwiktionary-ui/node_modules/
+
+enwiktionary/.project
+enwiktionary/.settings/
+enwiktionary/enwiktionary-rest/target/
+enwiktionary/enwiktionary-rest/.project
+enwiktionary/enwiktionary-rest/.settings/
+enwiktionary/enwiktionary-rest/.classpath
+enwiktionary/enwiktionary-rest/*.log
+
+enwiktionary/enwiktionary-web/target/
+enwiktionary/enwiktionary-web/.project
+enwiktionary/enwiktionary-web/.settings/
+enwiktionary/enwiktionary-web/.classpath
+enwiktionary/enwiktionary-web/*.log
+
+db/

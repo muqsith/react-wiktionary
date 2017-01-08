@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+        ">
+
+	<!-- Security -->
+	
+	<bean id="jwtAuthenticationProvider" class="com.faiza.wiktionary.security.JwtAuthenticationProvider">
+		<property name="userService" ref="userServiceBean" />
+	</bean>
+	
+	<bean id="jwtAuthenticationSuccessHandler" class="com.faiza.wiktionary.security.JwtAuthenticationSuccessHandler">
+	</bean>
+
+	<bean id="springSecurityFilterChain" class="org.springframework.web.filter.DelegatingFilterProxy">
+	</bean>
+	
+	<bean id="restAuthenticationEntryPoint" class="com.faiza.wiktionary.security.RestAuthenticationEntryPoint">
+	</bean>
+
+	<bean id="delegatingFilterRegistration"
+		class="org.springframework.boot.web.servlet.FilterRegistrationBean">
+		<property name="filter" ref="springSecurityFilterChain"></property>
+		<property name="urlPatterns">
+			<util:set>
+				<value>/app/rest/dictionary/*</value>
+			</util:set>
+		</property>
+		<property name="name" value="springSecurityFilterChain"></property>
+		<property name="order" value="1"></property>
+	</bean>
+
+	<security:global-method-security
+		pre-post-annotations="enabled" />
+
+	<security:http pattern="/app/rest/dictionary/**" entry-point-ref="restAuthenticationEntryPoint"
+		create-session="stateless">
+		<security:csrf disabled="true" />
+		<security:custom-filter before="FORM_LOGIN_FILTER"
+			ref="jwtAuthenticationFilter" />
+	</security:http>
+
+
+	<bean id="jwtAuthenticationFilter" class="com.faiza.wiktionary.security.JwtAuthenticationFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationSuccessHandler" ref="jwtAuthenticationSuccessHandler" />
+	</bean>
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider
+			ref="jwtAuthenticationProvider" />
+	</security:authentication-manager>
+</beans>

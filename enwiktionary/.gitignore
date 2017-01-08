@@ -1,0 +1,13 @@
+.project
+.settings/
+enwiktionary-rest/target/
+enwiktionary-rest/.project
+enwiktionary-rest/.settings/
+enwiktionary-rest/.classpath
+enwiktionary-rest/*.log
+
+enwiktionary-web/target/
+enwiktionary-web/.project
+enwiktionary-web/.settings/
+enwiktionary-web/.classpath
+enwiktionary-web/*.log

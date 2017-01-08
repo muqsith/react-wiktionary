@@ -1,0 +1,20 @@
+.result-panel {
+  order: 2;
+  flex: 1 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.result-view-container {
+  order: 1;
+  flex: 1 0 auto;
+  margin: 3%;
+  font-size: 85%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.definition-view {
+  order: 1;
+  flex: 1 0 auto;
+}

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+        ">
+        
+   	<aop:aspectj-autoproxy />
+
+	<bean id="properties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:app.properties</value>
+				<value>classpath*:database.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<context:component-scan base-package="com.faiza.wiktionary.*" />
+	
+	<mvc:annotation-driven />
+	
+
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="jdbcUrl" value="${db.url}" />
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="maximumPoolSize" value="${db.maxpoolsize}" />
+		<property name="idleTimeout" value="${db.idletimeout}" />
+	</bean>
+
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+	
+	<!-- 
+	<bean id="dataSource" class="org.sqlite.javax.SQLiteConnectionPoolDataSource">
+		<property name="url" value="${db.url}" />
+	</bean>
+	 -->
+	<!-- 
+	<bean id="dataSource" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean" 
+		depends-on="properties">
+		<property name="url" value="${db.url}" />
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="uniqueResourceName" value="sqlite-dataSource" />
+		<property name="minPoolSize" value="1" />
+		<property name="maxPoolSize" value="${db.maxpoolsize}" />
+	</bean>
+	 -->
+
+	<!-- Construct Atomikos UserTransactionManager, needed to configure Spring -->
+    <bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
+    	depends-on="dataSource" 
+    	init-method="init" destroy-method="close">
+        <!--  when close is called, should we force transactions to terminate or not? -->
+        <property name="forceShutdown">
+            <value>false</value>
+        </property>
+    </bean>
+
+    <!-- Also use Atomikos UserTransactionImp, needed to configure Spring  --> 
+    <bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp"
+    	depends-on="dataSource">
+        <property name="transactionTimeout"><value>300</value></property>
+    </bean>
+	
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"
+		depends-on="atomikosTransactionManager,atomikosUserTransaction">
+        <property name="transactionManager"><ref bean="atomikosTransactionManager"  /></property>
+        <property name="userTransaction"><ref bean="atomikosUserTransaction"  /></property>
+    </bean>
+ 	
+ 	
+    <bean id="springJtaPlatformAdapter" class="com.faiza.wiktionary.AtomikosJTAPlatform"
+    	depends-on="transactionManager">
+        <property name="jtaTransactionManager" ref="transactionManager" />
+    </bean>
+    
+	
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		depends-on="dataSource,springJtaPlatformAdapter">
+		<property name="persistenceUnitName" value="com.faiza.wiktionary" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.faiza.wiktionary.dao.entities" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>
+
+

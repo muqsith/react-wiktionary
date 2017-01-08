@@ -1,0 +1,254 @@
+
+.bookmarks {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  z-index: 100;
+}
+
+.bookmarks-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.bookmarks-container-init {
+  order:1;
+  flex: 0 1 auto;
+  width: 0%;
+  min-width: 0%;
+}
+
+.bookmarks-container-hide {
+  order:1;
+  flex: 1 0 auto;
+  width: 90%;
+  min-width: 90%;
+  max-width: 90%;
+
+  animation-name: bs;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bs {
+  0% {
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
+  }
+  100% {
+    width: 0%;
+    min-width: 0%;
+    max-width: 0%;
+    flex: 0 1 auto;
+  }
+}
+
+.bookmarks-container-show {
+  order:1;
+  flex: 0 1 auto;
+  width: 0%;
+  min-width: 0%;
+  max-width: 0%;
+
+  animation-name: bh;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bh {
+  0% {
+    width: 0%;
+    min-width: 0%;
+    max-width: 0%;
+  }
+  100% {
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
+    flex: 1 0 auto;
+  }
+}
+
+.bookmarks-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #eee;
+  box-shadow: 10px 0px 10px #ccc;
+}
+
+.bookmarks-content-list {
+  padding: 10px;
+}
+
+.bookmarks-content-init {
+  display: none;
+}
+
+.bookmarks-content-show {
+  opacity: 0;
+  display: block;
+
+  animation-name: bls;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bls {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+.bookmarks-content-hide {
+  opacity: 1.0;
+  display: none;
+
+  animation-name: blh;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes blh {
+  0% {
+    opacity: 1.0;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.bookmarks-bar {
+  order:2;
+  padding: 0;
+  margin: 0;
+  flex: 0 0 auto;
+  width: 9%;
+  min-width: 9%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.bookmarks-bar-handle {
+  order: 1;
+  flex: 0 1 auto;
+  position: absolute;
+  top: 40%;
+  width: 1.5%;
+  min-width: 1.5%;
+  max-width: 1.5%;
+  background-color: #777;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 2px 0px 2px 2px;
+  border: 2px solid transparent;
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: 8px 8px 10px #ccc;
+}
+
+.bookmarks-bar-text {
+  margin: 0;
+  padding: 0;
+  font-size: 90%;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  font-style: italic;
+  line-height: 1;
+  color: #ddd;
+}
+
+.bookmarks-bar-caret {
+  color: #333 !important;
+  font-size: 150%;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.bookmarks-heading-container {
+  order:1;
+  flex: 1 1 auto;
+  border-bottom: 3px solid #4285F4;
+}
+
+.bookmarks-icon {
+  color: #FFD76E;
+  margin: 4%;
+}
+
+.bookmarks-heading-text {
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400px;
+}
+
+.bookmarks-list {
+  order: 2;
+  flex: 1 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0;
+  margin: 0;
+  padding-top:1%;
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.bookmarks-list ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.bookmarks-list ul li {
+  margin-top: 4%;
+  padding:1px 2px;
+  border:1px solid transparent;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow:hidden !important;
+  text-overflow: ellipsis;
+}
+
+.bookmarks-list ul li:hover {
+  background-color: #fff;
+}
+
+.bookmarks-list ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.bookmarks-trashcan-anchor {
+  cursor: pointer;
+}
+
+.bookmarks-trashcan {
+  float: right;
+}
+
+.bookmark-icon-visible {
+  visibility: visible;
+}
+
+.bookmark-icon-hidden {
+  visibility: hidden;
+}
