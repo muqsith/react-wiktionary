@@ -12,6 +12,7 @@ $ mvn --version
 ```
 - [Node.js](https://nodejs.org/en/) make sure both node and npm are your path.
 - [SQLite](https://sqlite.org/) the entire database including drivers comes in few kilobytes, once you download extract it to a particular folder and get it on your path. To check if it is working you need to download the SQLite dump (have explained in the below set-up part, just download and get it on your path).
+
 ### Steps to run this project
 - Clone this repository to your local.
 - Go to project **react-wiktionary/enwiktionary-ui** and run the below commands.
@@ -32,9 +33,13 @@ $ mvn --version
     You are now connected to this db file.
     $ .schema
 ```
+
+
 >   The **.schema** command will reveal all the details of the tables and columns present.
-    You can query the tables normally you would do with any relationarl database
-    without any speed lag.
+>   You can query the tables normally you would do with any relationarl database
+>   without any speed lag.
+
+
 - To exit from the db type below command.
 ```sh
     $ .exit
