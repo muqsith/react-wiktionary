@@ -63,3 +63,7 @@ $ mvn --version
     $ npm start
 ```
 - Go to the url http://localhost:8888 on your system and you can see the dictionary app.
+
+
+
+### Please let me know if you face any difficulty during set-up or execution. You can raise the issue in github repo, i will try my best to promptly resolve it.
