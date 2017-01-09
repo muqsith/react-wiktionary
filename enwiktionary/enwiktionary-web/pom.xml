@@ -136,7 +136,8 @@
 							<executable>npm</executable>
 							<workingDirectory>../../enwiktionary-ui</workingDirectory>
 							<arguments>
-								<argument>npm run build</argument>
+								<argument>run</argument>
+								<argument>build</argument>
 							</arguments>
 						</configuration>
 					</plugin>
