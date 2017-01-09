@@ -58,4 +58,8 @@ const DefinitionView = connect(
   mapStateToProps
 )(DefinitionViewComponent);
 
+DefinitionView.propTypes = {
+  definition: PropTypes.string
+};
+
 export default DefinitionView;

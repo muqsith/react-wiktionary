@@ -1,5 +1,5 @@
 import styles from './../../../../scss/index.scss';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Header from './header.jsx';
 import Footer from './footer.jsx';
 import Dictionary from './dictionary.jsx';
@@ -55,5 +55,10 @@ const App = connect(
   mapStateToProps,
   mapDispatchToProps
 )(AppView);
+
+App.propTypes = {
+  status: PropTypes.string,
+  loadUserDetails: PropTypes.func
+}
 
 export default App;

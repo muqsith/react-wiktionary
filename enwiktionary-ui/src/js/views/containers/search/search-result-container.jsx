@@ -29,4 +29,8 @@ const SearchResultContainer = connect(
   mapStateToProps
 )(SearchResultContainerView);
 
+SearchResultContainer.propTypes = {
+  definition: PropTypes.string
+};
+
 export default SearchResultContainer;

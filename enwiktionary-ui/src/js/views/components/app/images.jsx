@@ -1,7 +1,7 @@
 import styles from './../../../../scss/index.scss';
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-export default function Images (props) {
+function Images (props) {
   let images_class = (props.show === "false") ? 'hidden' : 'images-area';
   return (
     <div className={`${styles.aside} ${styles['aside-2']}`}>
@@ -10,3 +10,9 @@ export default function Images (props) {
     </div>
   );
 };
+
+Images.propTypes = {
+  show: PropTypes.string
+};
+
+export default Images;

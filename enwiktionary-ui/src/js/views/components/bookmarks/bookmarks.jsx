@@ -1,9 +1,9 @@
 import styles from './../../../../scss/index.scss';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import BookmarksContent from './bookmarks-content.jsx';
 import BookmarksBar from './bookmarks-bar.jsx';
 
-export default class Bookmarks extends React.Component {
+class Bookmarks extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -41,3 +41,9 @@ export default class Bookmarks extends React.Component {
   };
 
 };
+
+Bookmarks.propTypes = {
+  show: PropTypes.string
+};
+
+export default Bookmarks;

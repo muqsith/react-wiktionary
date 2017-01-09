@@ -1,5 +1,5 @@
 import styles from './../../../../scss/index.scss';
-import React from 'react';
+import React , { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 
 import { connect } from 'react-redux';
@@ -37,5 +37,9 @@ const mapStateToProps = (state) => {
 const Header = connect(
   mapStateToProps
 )(HeaderView);
+
+Header.propTypes = {
+  word: PropTypes.object
+};
 
 export default Header;

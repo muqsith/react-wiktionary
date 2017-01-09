@@ -77,4 +77,11 @@ const SearchFieldContainer = connect(
   mapDispatchToProps
 )(SearchFieldContainerView);
 
+SearchFieldContainer.propTypes = {
+  paramtitle: PropTypes.string,
+  onkeyup: PropTypes.func,
+  word: PropTypes.object,
+  bookmarks: PropTypes.object
+};
+
 export default SearchFieldContainer;

@@ -1,12 +1,12 @@
 import styles from './../../../../scss/index.scss';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Content from './content.jsx';
 import Bookmarks from './../bookmarks/bookmarks.jsx';
 import Images from './images.jsx';
 import Search from './../search/search.jsx';
 import SearchResult from './../search/search-result.jsx';
 
-export default function Dictionary (props) {
+function Dictionary (props) {
   let title = '';
   if (props.params && props.params.title) {
     title = props.params.title;
@@ -22,3 +22,9 @@ export default function Dictionary (props) {
     </div>
   );
 };
+
+Dictionary.propTypes = {
+  params: PropTypes.object
+};
+
+export default Dictionary;

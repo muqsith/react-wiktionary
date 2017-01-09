@@ -1,5 +1,5 @@
 import styles from './../../../../scss/index.scss';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import font_awesome from 'font-awesome/css/font-awesome.css';
 
 import { connect } from 'react-redux';
@@ -51,5 +51,12 @@ const mapStateToProps = (state) => {
 const SearchField = connect(
   mapStateToProps
 )(SearchFieldView);
+
+SearchField.propTypes = {
+  paramtitle: PropTypes.string,
+  onKeyUp: PropTypes.func,
+  addFocus: PropTypes.func,
+  removeFocus: PropTypes.func
+};
 
 export default SearchField;

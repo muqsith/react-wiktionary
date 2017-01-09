@@ -1,5 +1,5 @@
 import styles from './../../../../scss/index.scss';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import {browserHistory} from "react-router";
 import { connect } from 'react-redux';
@@ -40,5 +40,10 @@ const WordLink = connect(
   mapStateToProps,
   mapDispatchToProps
 )(WordLinkView);
+
+WordLink.propTypes = {
+  title: PropTypes.string,
+  onclick: PropTypes.func
+};
 
 export default WordLink;

@@ -15,4 +15,6 @@ enwiktionary/enwiktionary-web/.classpath
 enwiktionary/enwiktionary-web/src/main/webapp/public/
 enwiktionary/enwiktionary-web/*.log
 
+enwiktionary/enwiktionary-web/tmlog.lck
+
 db/

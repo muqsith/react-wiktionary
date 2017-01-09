@@ -1,8 +1,8 @@
 import styles from './../../../../scss/index.scss';
 import font_awesome from 'font-awesome/css/font-awesome.css';
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-export default function BookmarksBar (props) {
+function BookmarksBar (props) {
   let caret_class = 'fa fa-caret-right';
   let title = "Show Bookmarks";
 
@@ -28,3 +28,10 @@ export default function BookmarksBar (props) {
     </div>
   );
 };
+
+BookmarksBar.propTypes = {
+  view: PropTypes.bool,
+  onClick: PropTypes.func
+};
+
+export default BookmarksBar;

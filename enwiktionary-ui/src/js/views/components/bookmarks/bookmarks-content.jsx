@@ -1,5 +1,5 @@
 import styles from './../../../../scss/index.scss';
-import React from 'react';
+import React , { PropTypes } from 'react';
 import { Link } from 'react-router';
 import WordLink from './bookmark-link.jsx';
 import RemoveBookmarkLink from './remove-bookmark.jsx';
@@ -58,5 +58,10 @@ const mapStateToProps = (state) => {
 const BookmarksContent = connect(
   mapStateToProps
 )(BookmarksContentContainer);
+
+BookmarksContent.propTypes = {
+  view: PropTypes.bool,
+  bookmarks: PropTypes.object
+};
 
 export default BookmarksContent;

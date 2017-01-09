@@ -1,5 +1,5 @@
 import styles from './../../../../scss/index.scss';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import { connect } from 'react-redux';
@@ -42,5 +42,10 @@ const RemoveBookmarkLink = connect(
   mapStateToProps,
   mapDispatchToProps
 )(RemoveBookmarkLinkView);
+
+RemoveBookmarkLink.propTypes = {
+  title: PropTypes.string,
+  onclick: PropTypes.func
+};
 
 export default RemoveBookmarkLink;
