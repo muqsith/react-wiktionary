@@ -26,7 +26,7 @@ $ mvn --version
 - In the mean time you can download the SQLite Dictionary dump from [here](https://drive.google.com/file/d/0B8XOtGdedKnbejhFejRKczZDcGs/view?usp=sharing) it's ~60 MB (zipped), the link to this dictionary is from my google drive (i made it publicly accessible link).
 - Once the SQLite dictionary is downloaded, create a folder with name **db** in project's root folder (**react-wiktionary**), and place this zip file over there and extract it.
 - Now go the folder **react-wiktionary/enwiktionary/enwiktionary-rest/src/main/resources/** and open the file **database.properties** in any normal text editor, and replace the value with the location of your **enwiktionary.db** (SQLite dictionary dump). 
-- db.url=jdbc:sqlite: **your location goes here** /enwiktionary.db
+- db.url=jdbc:sqlite:<your location goes here>/enwiktionary.db
 - Example (on my windows machine): db.url=jdbc:sqlite:F:/Muqsith/projects/react-wiktionary/db/enwiktionary.db
 - You can also check what's there in this SQLite database dump, just execute below commands.
 ```sh
