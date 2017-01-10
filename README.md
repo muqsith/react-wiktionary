@@ -6,12 +6,12 @@ ReactJS based wiktionary ui (powered by Java, Spring and SQLite)
 ```sh
 $ java -version
 ```
-- [Maven 3](https://maven.apache.org/download.cgi) this also need to be on your path. The installation is very simple you need to download the .zip or .tar.gz extract it at certain folder, create an envionment variable MVN_HOME with value of the location of that folder and then to your path add the bin directory present in the folder. Just check if it is working by executing below command.
+- [Maven 3](https://maven.apache.org/download.cgi) this also need to be on your path. The installation is very simple you need to download the .zip or .tar.gz extract it at certain folder, create an envionment variable MVN_HOME with value of that folder location and then add the bin directory present in that folder to your path. Just check if it is working by executing below command.
 ```sh
 $ mvn --version
 ```
 - [Node.js](https://nodejs.org/en/) make sure both node and npm are your path.
-- [SQLite](https://sqlite.org/) the entire database including drivers comes in few kilobytes, once you download extract it to a particular folder and get it on your path. To check if it is working you need to download the SQLite dump (have explained in the below set-up part, just download and get it on your path).
+- [SQLite](https://sqlite.org/) the entire database application including drivers comes in few kilobytes, once you download extract it to a particular folder and get the folder on your path. To check if it is working you need to download the dictionary dump (have explained in the below set-up part).
 
 ### Steps to run this project
 - Clone this repository to your local.
@@ -23,10 +23,9 @@ $ mvn --version
 ```sh
     $ npm install -g webpack
 ```
-- In the mean time you can download the SQLite Dictionary dump from [here](https://drive.google.com/file/d/0B8XOtGdedKnbejhFejRKczZDcGs/view?usp=sharing) it's ~60 MB (zipped), the link to this dictionary is from my google drive (i made it publicly accessible link).
-- Once the SQLite dictionary is downloaded, create a folder with name **db** in project's root folder (**react-wiktionary**), and place this zip file over there and extract it.
-- Now go the folder **react-wiktionary/enwiktionary/enwiktionary-rest/src/main/resources/** and open the file **database.properties** in any normal text editor, and replace the value with the location of your **enwiktionary.db** (SQLite dictionary dump). 
-- db.url=jdbc:sqlite:<your location goes here>/enwiktionary.db
+- In the mean time you can download the dictionary dump from [here](https://drive.google.com/file/d/0B8XOtGdedKnbejhFejRKczZDcGs/view?usp=sharing) it's ~60 MB (zipped), the link to this dictionary is from my google drive (i made it publicly accessible link).
+- Once the dictionary dump is downloaded, create a folder with name **db** in project's root folder (**react-wiktionary**), and place this zip file over there and extract it.
+- Now go the folder **react-wiktionary/enwiktionary/enwiktionary-rest/src/main/resources/** and open the file **database.properties** in any normal text editor, and replace the value with the location of your **enwiktionary.db** (SQLite dictionary dump).
 - Example (on my windows machine): db.url=jdbc:sqlite:F:/Muqsith/projects/react-wiktionary/db/enwiktionary.db
 - You can also check what's there in this SQLite database dump, just execute below commands.
 ```sh
@@ -67,4 +66,4 @@ $ mvn --version
 
 
 
-###### Please let me know if you face any difficulty during set-up or execution. You can raise the issue in github repo, i will try my best to promptly resolve it.
+##### Please let me know if you face any difficulty during set-up or execution. You can raise the issue in github repo, i will try my best to promptly resolve it.
